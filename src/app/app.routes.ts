@@ -129,6 +129,10 @@ export const routes: Routes = [
     path: 'payments/success',
     loadComponent: () => import('./serviciosPayments/success/success.component').then(m => m.default)
   },
+  {
+    path: 'payments/cancel',
+    loadComponent: () => import('./serviciosPayments/cancel/cancel.component').then(m => m.default)
+  },
   { path: '', redirectTo: '/home/page-alojamiento', pathMatch: 'full' },
   { path: '**', redirectTo: '/home/page-alojamiento', pathMatch: 'full' },
 

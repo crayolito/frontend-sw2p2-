@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './cancel.component.html',
   styleUrl: './cancel.component.css'
 })
-export class CancelComponent {
+export default class CancelComponent {
   public router = inject(Router);
 
   ejecutarCancelacionPago(): void {
