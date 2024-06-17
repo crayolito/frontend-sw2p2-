@@ -1,0 +1,73 @@
+<div class="h-screen w-screen overflow-y-scroll  relative">
+  <app-search-bar />
+  <div class="w-[100%] h-[50%] relative">
+
+    <img src="https://static.tacdn.com/img2/branding/homepage/hotel-hero-default-4.jpg" alt=""
+      class="object-cover w-full h-full" />
+    <div class="absolute top-0 w-full h-[35%] bg-gradient-to-b from-black to-transparent opacity-70"></div>
+    <div class="absolute bottom-0 w-full h-[20%] bg-gradient-to-t from-black to-transparent opacity-70"></div>
+    <div class="absolute inset-0 mx-[10%]">
+      <div class="flex flex-row text-white font-google-anta mt-[1.5%] h-[10%] items-center justify-between">
+        <p class="text-4xl">UrpiTours.com</p>
+        <div class="flex flex-row gap-6 w-[55%] items-center justify-end ">
+          @if(isLogin()){
+          <p class="text-white text-2xl font-google-anta" style="text-shadow: 2px 2px black;">
+            {{quienLogin().email}}</p>
+          <img src="assets/perfilAuth.svg" alt="" class="h-9 w-9">
+          <button (click)="cerrarSesion()" class="hover:bg-slate-500" routerLink="/home/page-alojamiento">
+            <img src="assets/cerrar-sesion.svg" alt="" class="h-9 w-9">
+          </button>
+          }@else {
+          <button class="p-[0.7%] text-xl rounded-lg hover:bg-slate-400 hover:bg-opacity-50">
+            <p>BOB</p>
+          </button>
+          <button class="p-[0.5%] text-xl rounded-lg hover:bg-slate-400 hover:bg-opacity-50">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Flag_of_Bolivia.svg/200px-Flag_of_Bolivia.svg.png"
+              alt="" class="w-9 h-9 rounded-full object-cover" />
+          </button>
+          <button class="p-[0.5%] text-xl rounded-lg hover:bg-slate-400 hover:bg-opacity-50">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-9 h-9" viewBox="0 -960 960 960" fill="#ffffff">
+              <path
+                d="M478-240q21 0 35.5-14.5T528-290q0-21-14.5-35.5T478-340q-21 0-35.5 14.5T428-290q0 21 14.5 35.5T478-240Zm-36-154h74q0-33 7.5-52t42.5-52q26-26 41-49.5t15-56.5q0-56-41-86t-97-30q-57 0-92.5 30T342-618l66 26q5-18 22.5-39t53.5-21q32 0 48 17.5t16 38.5q0 20-12 37.5T506-526q-44 39-54 59t-10 73Zm38 314q-83 0-156-31.5T197-197q-54-54-85.5-127T80-480q0-83 31.5-156T197-763q54-54 127-85.5T480-880q83 0 156 31.5T763-763q54 54 85.5 127T880-480q0 83-31.5 156T763-197q-54 54-127 85.5T480-80Zm0-80q134 0 227-93t93-227q0-134-93-227t-227-93q-134 0-227 93t-93 227q0 134 93 227t227 93Zm0-320Z" />
+            </svg>
+          </button>
+          <button class="p-[0.5%] text-xl rounded-lg hover:bg-slate-400 hover:bg-opacity-50">
+            <p>Resgistra tu servicio</p>
+          </button>
+          <button routerLink="/auth/resgitro" class="px-[2%] py-[1%] text-xl rounded-lg bg-custom-primary text-white">
+            <p>Hazte una cuenta</p>
+          </button>
+          <button routerLink="/auth/login" class="px-[2%] py-[1%] text-xl rounded-lg bg-custom-primary text-white">
+            <p>Inicio Sesion</p>
+          </button>
+          }
+        </div>
+      </div>
+      <div class="flex flex-row font-google-anta mt-[0.7%] h-[10%] items-center gap-4">
+        @for(opcion of opcionesHome ; track opcionesHome; let id= $index, first = $first){
+        <div
+          class="cursor-pointer flex flex-row items-center justify-center gap-2 border-custom-primary  px-5  py-3 rounded-full  has-[:checked]:border-4 has-[:checked]:bg-custom-primary has-[:checked]:bg-opacity-10">
+          <img src="{{opcion.icono}}" alt="" class="h-9 w-9 object-cover">
+          <input class="hidden" type="radio" name="opcionHP" id="opcionHP{{id}}" class="peer/opcionHP{{id}} "
+            [checked]="first" />
+          <label (click)="redireccionarPage(opcion.titulo)" for="opcionHP{{id}}"
+            class=" cursor-pointer peer-checked/opcionHP{{id}}:text-custom-primary text-white text-2xl font-google-anta">{{opcion.titulo}}</label>
+        </div>
+        }
+      </div>
+      <div class="w-[100%] h-[60%] font-google-anta text-white flex flex-col justify-center">
+        <p class="text-7xl" style="text-shadow: 5px 5px black">
+          {{titulo1()}}
+        </p>
+        <p class="text-4xl" style="text-shadow: 3px 3px black">
+          {{titulo2()}}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="{'h-[100%]': isAlojamiento() || isNone(), 'h-[62%]': isVuelos(),'h-[150%]': isAtraccionTurismo()}"
+    class="w-[100%] px-[9%]">>
+    <router-outlet />
+  </div>
+</div>

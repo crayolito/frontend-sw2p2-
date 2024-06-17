@@ -1,0 +1,38 @@
+<!-- CUANTO TIEMPO SE IRA-->
+<!-- START -->
+<button
+  class="relative group px-2 w-full h-full bg-slate-50 rounded-xl flex flex-row gap-2 justify-between items-center">
+  <div class="flex flex-row gap-2 items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 flex-shrink-0" viewBox="0 -960 960 960" fill="#000000">
+      <path
+        d="M200-80q-33 0-56.5-23.5T120-160v-560q0-33 23.5-56.5T200-800h40v-80h80v80h320v-80h80v80h40q33 0 56.5 23.5T840-720v560q0 33-23.5 56.5T760-80H200Zm0-80h560v-400H200v400Zm0-480h560v-80H200v80Zm0 0v-80 80Zm280 240q-17 0-28.5-11.5T440-440q0-17 11.5-28.5T480-480q17 0 28.5 11.5T520-440q0 17-11.5 28.5T480-400Zm-160 0q-17 0-28.5-11.5T280-440q0-17 11.5-28.5T320-480q17 0 28.5 11.5T360-440q0 17-11.5 28.5T320-400Zm320 0q-17 0-28.5-11.5T600-440q0-17 11.5-28.5T640-480q17 0 28.5 11.5T680-440q0 17-11.5 28.5T640-400ZM480-240q-17 0-28.5-11.5T440-280q0-17 11.5-28.5T480-320q17 0 28.5 11.5T520-280q0 17-11.5 28.5T480-240Zm-160 0q-17 0-28.5-11.5T280-280q0-17 11.5-28.5T320-320q17 0 28.5 11.5T360-280q0 17-11.5 28.5T320-240Zm320 0q-17 0-28.5-11.5T600-280q0-17 11.5-28.5T640-320q17 0 28.5 11.5T680-280q0 17-11.5 28.5T640-240Z" />
+    </svg>
+    <p
+      class="bg-transparent font-google-anta text-black text-xl focus:outline-none overflow-ellipsis  whitespace-nowrap">
+      {{valueSelectComponent()}}
+    </p>
+  </div>
+  <input type="checkbox" id="opcion2" class="peer/opcion2 hidden">
+  <label for="opcion2"
+    class="bg-open-windown h-8 w-8  bg-cover bg-center cursor-pointer peer-checked/opcion2:bg-close-windown transition-all"></label>
+  <div [class]="viewMultipleOpciones() ? 'h-[195px]' : 'h-[135px]'"
+    class=" flex flex-col gap-4 items-start p-5 absolute top-[118%] left-0  w-[620px] bg-slate-50 rounded-xl shadow-custom-shadow peer-checked:bg-black invisible peer-checked/opcion2:visible">
+    <p class="flex flex-col text-2xl font-bold font-google-anta text-black">¿Cuanto tiempo quiere estar?</p>
+    <div class="flex flex-row gap-5 ml-[1.5%]">
+      @for(opcion of listaOpciones; track listaOpciones ; let index = $index){
+      <div class="flex flex-row gap-4" (click)="update(opcion)">
+        <input id="{{index}}" class="peer/{{index}}" type="radio" name="status" />
+        <label for="{{index}}" class="peer-checked/{{index}}:text-sky-500 text-xl font-google-anta">{{opcion}}
+        </label>
+      </div>
+      }
+    </div>
+    <div [class]="{'invisible' : !viewMultipleOpciones()}"
+      class="flex flex-row gap-3 py-2 px-2 items-center h-[40%] w-[35%]  border-2 border-slate-500 rounded-md text-xl font-google-anta has-[:focus]:border-sky-500 has-[:focus]:border-4 transition-transform">
+      <input type="number" class="bg-transparent w-[57%] h-[100%] border-r-2" (input)="onInputChange($event)" min="1"
+        value="1" max="99" oninput="validity.valid||(value='1');">
+      <p>{{stringNoches()}}</p>
+    </div>
+  </div>
+</button>
+<!-- END -->

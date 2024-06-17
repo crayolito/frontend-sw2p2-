@@ -1,0 +1,8 @@
+<div class="flex flex-row h-full w-full border-2 bg-transparent border-gray-500  rounded-lg">
+  <label (click)="sumaValue(getValue())"
+    class="flex items-center justify-center w-[25%] font-bold text-3xl hover:bg-custom-primary hover:bg-opacity-20 text-custom-primary text-opacity-80">+</label>
+  <input type="number" class="flex items-center bg-transparent h-[100%] w-[50%] font-google-anta font-bold text-3xl "
+    [value]="valueNumber()" min="0" max="99" oninput="validity.valid||(value='0');" readonly>
+  <label (click)="restaValue(getValue())"
+    class="flex items-center justify-center w-[25%] font-bold text-3xl hover:bg-custom-primary hover:bg-opacity-20 text-custom-primary text-opacity-80">-</label>
+</div>

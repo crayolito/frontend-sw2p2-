@@ -1,0 +1,150 @@
+<div class="h-full w-full ">
+  <form method="post" action="" class=" w-full h-[145%] mt-[2.5%] pb-[1%] flex flex-col items-center"
+    [formGroup]="myPerfilEmpresa" autocomplete="off" (ngSubmit)="porcesarFormularioEditado()">
+    <!-- PARTE 1 -->
+    <!-- INICIO -->
+    <div class="flex flex-row w-[80%] h-[48%] gap-[2%] items-center justify-center">
+      <!-- <div class="bg-blue-800 w-[40%] h-[95%]"> -->
+
+      <label for="fileUpload"
+        class="w-[580px] h-[450px] flex flex-col justify-center items-center text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+        <img id="imagePreview" [src]="imageEmpresa()" alt=""
+          [class]="estadoImagen() ? 'w-full h-full object-contain' : 'w-[200px] h-[200px] object-contain'" />
+        <input id="fileUpload" type='file' class="hidden" (change)="onFileSelected($event)"
+          [disabled]="isVerPerfil()" />
+      </label>
+
+      <!-- </div> -->
+      <div class="w-[40%] h-[95%]">
+        <!-- NOMBRE DE LA EMPRESA -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Empresa</p>
+          <input formControlName="nombreEmpresa" type=" text" name="" id="" placeholder="Nombre de Empresa"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- DUEÑO -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Dueño</p>
+          <input formControlName="nombreDueño" type=" text" name="" id="" placeholder="Nombre del Dueño"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- HORARIO ATENCION -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Horario Atencion</p>
+          <input formControlName="horarioAtencion" type=" text" name="" id="" placeholder="Horario Atencion"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- NRO ATENCION  -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Numero Atencion Cliente</p>
+          <input formControlName="numeroAtencion" type="number" name="" id="" placeholder="Telefono"
+            oninput="validity.valid||(value='1');"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+      </div>
+    </div>
+    <!-- FIN -->
+
+    <!-- PARTE 2 -->
+    <!-- INICIO -->
+    <div class="flex flex-row w-[80%] h-[40%]  gap-[2%] items-center justify-center ">
+      <div class="w-[40%] h-[100%] flex flex-col items-center justify-center">
+        <!-- UBICACION COORDENADAS -->
+        <div class="w-full h-[30%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Ubicacion Coordenadas</p>
+          <input formControlName="ubicacionCoordenadas" type=" text" name="" id="" placeholder="Longitud , Latitud"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- UBICACION DESCRIPTIVA -->
+        <div class="w-full h-[30%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Ubicacion Descriptiva</p>
+          <input formControlName="ubicacionDescriptiva" type="text" name="" id="" placeholder="Detalle"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- HORARIO ATENCION -->
+        <div class="w-full h-[30%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Cantidad Estrellas</p>
+          <input formControlName="cantidadHabitaciones" type="number" name="" id="" placeholder="Cantidad"
+            oninput="validity.valid||(value='1');"
+            class=" rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+      </div>
+      <!-- DESCRIPCION EMPRESA -->
+      <div class="w-[40%] h-[95%]  rounded-2xl border-2 border-gray-400 px-[2%] py-[1%]">
+        <p class="mb-[3%] font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Servicio Alojamiento</p>
+        <textarea formControlName="descripcionServicios" name="" id="" cols="30" rows="2"
+          placeholder="Describa los servicios generales del Alojamiento"
+          class=" w-full h-[80%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4 rounded-md"
+          style="resize: none;"></textarea>
+      </div>
+    </div>
+    <!-- FIN -->
+
+
+    <!-- PARTE 3-->
+    <!-- INICIO -->
+    <div class=" flex flex-row w-[80%] h-[40%]  gap-[2%] items-center justify-center ">
+      <!-- TIPO DE CUARTOS -->
+      <div class="p-[1.5%] w-[40%] h-[95%] rounded-2xl border-2 border-gray-400 ">
+        <div class="w-full h-[20%] flex flex-row items-center gap-[2%]">
+          <input formControlName="tipoHabitacion" type="text" name="" id="" placeholder="Descripción tipo Habitacion"
+            class="rounded-md w-[100%] h-[100%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+          <div (click)="addTipoHabitacion()"
+            class="cursor-pointer h-[80%] w-[10%] rounded-xl bg-custom-primary  border-4 flex flex-col shadow-xl items-center justify-center justify-items-center">
+            <p class="text-white font-bold font-google-anta text-3xl py-4 " style="text-shadow: 2px 2px black;">+
+            </p>
+          </div>
+        </div>
+        <div class="h-[25vh] w-[100%] mt-[2.5%] overflow-auto flex flex-col gap-[6%]">
+          @for(habitacion of tiposHabitacion; track tiposHabitacion ; let id= $index){
+          <div class="flex flex-row gap-[1%] items-center flex-shrink-0">
+            <img src="assets/cuartoAlojamiento.svg" alt="Descripción de la imagen" class="h-9 w-9">
+            <p class="text-2xl text-black font-google-anta">{{habitacion}}</p>
+            <img src="assets/delete.svg" alt="" class="h-8 w-8 cursor-pointer" (click)="borrarTiposHabitacion(id)">
+          </div>
+          }@empty {
+          <div class="flex flex-row gap-[1%] items-center h-[100%] w-full ">
+            <img src="assets/teclado.gif" alt="" class="h-full w-full object-contain">
+          </div>
+          }
+        </div>
+      </div>
+      <div class="w-[40%] h-[100%] flex flex-col items-center justify-center">
+        <!-- INSTAGRAM -->
+        <div class="w-full h-[30%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Instagram</p>
+          <input formControlName="enlaceIG" type=" text" name="" id="" placeholder="Link Pagina"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- FACEBOOK -->
+        <div class="w-full h-[30%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Facebook</p>
+          <input formControlName="enlaceFB" type=" text" name="" id="" placeholder="Link Pagina"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- WEB -->
+        <div class="w-full h-[30%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Pagina Web</p>
+          <input formControlName="enlaceWEB" type=" text" name="" id="" placeholder="Link Pagina"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+      </div>
+    </div>
+    <!-- FIN -->
+
+
+    <!-- PARTE 4 -->
+    <!-- INICIO -->
+    <div class="flex flex-row w-[80%] h-[10%]  items-center justify-end">
+      <button type="submit" class="h-[80%] w-[12%] rounded-xl bg-custom-primary mr-[9%] border-4 shadow-xl">
+        <p class="text-white font-bold font-google-anta text-3xl py-4" style="text-shadow: 2px 2px black;">
+          {{textButtonForm()}}</p>
+      </button>
+    </div>
+    <! -- FIN -->
+  </form>
+
+  <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+
+  <script src="upload_widget.js" type="text/javascript"></script>
+</div>

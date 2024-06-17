@@ -1,0 +1,25 @@
+<div class="flex flex-col  h-full w-full items-center">
+  <div class="my-[2%] flex flex-col w-full h-[20%]">
+    <p class="font-bold text-3xl font-google-anta">Sugerencias Aerolineas</p>
+    <p class="text-2xl font-google-anta">Opciones mas populares entre la comunidad de UrpiTours</p>
+  </div>
+  <div class="flex flex-row  w-full h-full gap-[1%] mb-[3%]">
+    <div (click)="abrirPaginaExterna(viewDataPeru.getValue().urlPage)"
+      class=" cursor-pointer h-[90%] w-[50%]  rounded-xl relative shadow-custom-shadow">
+      <div class="flex flex-row items-center absolute gap-4 top-[5%] left-[2%]">
+        <p class="font-bold font-google-anta text-4xl text-white" style="text-shadow: 2px 2px black">Bolivia</p>
+        <img src="assets/banderaBolivia.png" alt="" class="h-8 w-8 rounded-md">
+      </div>
+      <img [src]="viewDataPeru.getValue().image" alt="" class="w-[100%] h-[100%] object-cover rounded-xl">
+    </div>
+
+    <div (click)="abrirPaginaExterna(viewDataBolivia.getValue().urlPage)"
+      class="cursor-pointer h-[90%] w-[50%] bg-yellow-700 rounded-xl relative shadow-custom-shadow">
+      <div class="flex flex-row items-center absolute gap-4 top-[5%] left-[2%]">
+        <p class="font-bold font-google-anta text-4xl text-white" style="text-shadow: 2px 2px black">Peru</p>
+        <img src="assets/banderaPeru.png" alt="" class="h-8 w-8 rounded-md">
+      </div>
+      <img [src]="viewDataBolivia.getValue().image" alt="" class="w-[100%] h-[100%] object-cover rounded-xl">
+    </div>
+  </div>
+</div>

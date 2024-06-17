@@ -1,0 +1,25 @@
+#body-custom{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  bottom: #0000;
+}
+
+
+
+#slider-wrapper #image-list{
+  display: grid;
+  gap: 18px;
+  font-size: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  grid-template-columns: repeat(10,1fr);
+
+}
+
+#slider-wrapper #image-list #image-item{
+  width: 325px;
+  height: 400px;
+  object-fit: cover;
+}

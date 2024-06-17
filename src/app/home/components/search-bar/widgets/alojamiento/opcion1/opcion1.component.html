@@ -1,0 +1,31 @@
+<!-- A DONDE VAS-->
+<!-- START -->
+<div class="px-2 w-full h-full  bg-slate-50 rounded-xl flex flex-row gap-2 items-center">
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-9 w-9 flex-shrink-0" viewBox="0 -960 960 960" fill="#000000">
+    <path
+      d="M80-200v-240q0-27 11-49t29-39v-112q0-50 35-85t85-35h160q23 0 43 8.5t37 23.5q17-15 37-23.5t43-8.5h160q50 0 85 35t35 85v112q18 17 29 39t11 49v240h-80v-80H160v80H80Zm440-360h240v-80q0-17-11.5-28.5T720-680H560q-17 0-28.5 11.5T520-640v80Zm-320 0h240v-80q0-17-11.5-28.5T400-680H240q-17 0-28.5 11.5T200-640v80Zm-40 200h640v-80q0-17-11.5-28.5T760-480H200q-17 0-28.5 11.5T160-440v80Zm640 0H160h640Z" />
+  </svg>
+  <input type="text" name="" id="opcion1" placeholder="¿A donde vas?" [value]="valorSeleccionado()"
+    class=" w-full peer/opcion1 bg-transparent font-google-anta text-black text-xl focus:outline-none" />
+  <input type="checkbox" id="opcion" class="peer/opcion hidden">
+  <label for="opcion"
+    class="bg-open-windown h-8 w-8  bg-cover bg-center cursor-pointer peer-checked/opcion:bg-close-windown transition-all"></label>
+  <div
+    class="peer-checked/opcion:visible invisible flex flex-col  absolute  top-[118%] left-[0%]  w-[500px] bg-slate-50 rounded-xl shadow-custom-shadow">
+    <p class="font-bold font-google-anta text-xl m-5">Destinos populares serca</p>
+    @for (lugarViaje of lugaresViaje; track lugaresViaje; let last = $last) {
+    <div [class]="{'rounded-b-xl' : last}" (click)="selectLugarViaje(lugarViaje)"
+      class="items-center flex flex-row gap-4  w-[100%] h-[87px]   border-b-2  border-b-gray-400 border-opacity-50 hover:bg-gray-400 hover:bg-opacity-50">
+      <svg xmlns="http://www.w3.org/2000/svg" class="ml-4 h-10 w-10" viewBox="0 -960 960 960" fill="#000000">
+        <path
+          d="M480-480q33 0 56.5-23.5T560-560q0-33-23.5-56.5T480-640q-33 0-56.5 23.5T400-560q0 33 23.5 56.5T480-480Zm0 294q122-112 181-203.5T720-552q0-109-69.5-178.5T480-800q-101 0-170.5 69.5T240-552q0 71 59 162.5T480-186Zm0 106Q319-217 239.5-334.5T160-552q0-150 96.5-239T480-880q127 0 223.5 89T800-552q0 100-79.5 217.5T480-80Zm0-480Z" />
+      </svg>
+      <div class="flex flex-col">
+        <p class="text-2xl font-bold font-google-anta ">{{lugarViaje.departamento}}</p>
+        <p class="text-xl  font-google-anta ">{{lugarViaje.pais}}</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<!-- END -->

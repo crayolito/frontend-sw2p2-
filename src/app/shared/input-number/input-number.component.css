@@ -1,0 +1,13 @@
+input[type='number'] {
+  /* width: 60px; */
+  text-align: center;
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  size: 10px;
+  margin: 0;
+}

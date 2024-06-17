@@ -1,0 +1,197 @@
+<div class="h-full w-full ">
+  <form method="post" action="" class=" w-full h-[145%] mt-[2.5%] pb-[1%] flex flex-col items-center" autocomplete="off"
+    [formGroup]="formOffer" (ngSubmit)="procesarFormulario()">
+    <!-- PARTE 1 -->
+    <!-- INICIO -->
+    <div class="flex flex-row w-[80%] h-[48%] gap-[2%] items-center justify-center">
+      <!-- <div class="bg-blue-800 w-[40%] h-[95%]"> -->
+
+      <label for="fileUpload"
+        class="w-[580px] h-[450px] flex flex-col justify-center items-center text-blue rounded-lg shadow-lg tracking-wide uppercase border border-blue cursor-pointer hover:bg-blue hover:text-white">
+        <img id="imagePreview" [src]="imagenOferta()" alt=""
+          [class]="estadoImagen() ? 'w-full h-full object-contain' : 'w-[200px] h-[200px] object-contain'" />
+        <input id="fileUpload" type='file' class="hidden" (change)="onFileSelected($event)" />
+      </label>
+
+      <!-- </div> -->
+      <div class="w-[40%] h-[95%]">
+        <!-- TITULO OFERTA -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Titulo Oferta</p>
+          <input type=" text" name="" id="" placeholder="Titulo" formControlName="titulo"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- PRECIO OFERTA -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Precio BOB</p>
+          <input type="number" name="" id="" placeholder="Cantidad" oninput="validity.valid||(value='1');"
+            formControlName="precio"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- DESCUENTO OFERTA -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Descuento</p>
+          <input type="number" name="" id="" placeholder="Cantidad" oninput="validity.valid||(value='1');"
+            formControlName="descuento"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+        <!-- CANTIDAD DE CAMAS  -->
+        <div class="w-full h-[25%]  flex flex-col justify-between">
+          <p class=" font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Cantidad Camas</p>
+          <input type="number" name="" id="" placeholder="Cantidad" oninput="validity.valid||(value='1');"
+            formControlName="nroCamas"
+            class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+        </div>
+      </div>
+    </div>
+    <!-- FIN -->
+
+    <!-- PARTE 2 -->
+    <!-- INICIO -->
+    <div class="flex flex-row w-[80%] h-[40%]  gap-[2%] items-center justify-center ">
+      <div class="p-[1.5%] w-[40%] h-[95%] rounded-2xl border-2 border-gray-400 ">
+        <div class="relative w-full h-[20%] flex flex-row items-center gap-[2%]">
+          <input type="text" name="" id="" placeholder="Seleccion una Habitgacion" [value]="valueSelectHabitacion"
+            class="rounded-md w-[80%] h-[100%] fnt-google-anta text-2xl pl-4 outline-none border-custom-primary border-4 font-google-anta"
+            disabled>
+          <input type="checkbox" id="opcionOffer" class="peer/opcionOffer hidden">
+          <label for="opcionOffer"
+            class="bg-open-windown h-10 w-10 bg-cover bg-center cursor-pointer peer-checked/opcionOffer:bg-close-windown transition-all"></label>
+          <div (click)="addHabitacionOffer()"
+            class="cursor-pointer h-[80%] w-[10%] rounded-xl bg-custom-primary  border-4 flex flex-col shadow-xl items-center justify-center justify-items-center">
+            <p class="text-white font-bold font-google-anta text-3xl py-4 " style="text-shadow: 2px 2px black;">+
+            </p>
+          </div>
+          <div
+            class="peer-checked/opcionOffer:visible invisible flex flex-col  absolute  top-[118%] left-[0%]  w-[500px] bg-slate-50 rounded-xl shadow-custom-shadow z-10">
+            @for (habitacion of habitacionesAuxiliares; track habitacionesAuxiliares; let last = $last) {
+            <div [class]="{'rounded-b-xl' : last}" (click)="updateSelectHabitacion(habitacion)"
+              class="items-center flex flex-row gap-4  w-[100%] h-[87px]   border-b-2  border-b-gray-400 border-opacity-50 hover:bg-gray-400 hover:bg-opacity-50">
+              <img src="assets/cuartoAlojamiento.svg" alt="" class="ml-4 h-10 w-10">
+              <div class="flex flex-col">
+                <p class="text-2xl font-bold font-google-anta ">{{habitacion}}</p>
+              </div>
+            </div>
+            }
+          </div>
+        </div>
+        <div class="h-[25vh] w-[100%] mt-[2.5%] overflow-auto flex flex-col gap-[6%]">
+          @for(habitacion of habitacionOffer; track habitacionOffer ; let id= $index){
+          <div class="flex flex-row gap-[1%] items-center flex-shrink-0">
+            <img src="assets/cuartoAlojamiento.svg" alt="Descripción de la imagen" class="h-9 w-9">
+            <p class="text-2xl text-black font-google-anta">{{habitacion}}</p>
+            <img src="assets/delete.svg" alt="" class="h-8 w-8 cursor-pointer" (click)="deleteHabitacionOffer(id)">
+          </div>
+          }@empty {
+          <div class="flex flex-row gap-[1%] items-center h-[100%] w-full ">
+            <img src="assets/teclado.gif" alt="" class="h-full w-full object-contain">
+          </div>
+          }
+        </div>
+      </div>
+      <!-- DESCRIPCION OFERTA -->
+      <div class="w-[40%] h-[95%]  rounded-2xl border-2 border-gray-400 px-[2%] py-[1%]">
+        <p class="mb-[3%] font-google-anta text-2xl pt-2" style="text-shadow: 1px 1px #31bb11;">Servicio de las
+          Habitaciones</p>
+        <textarea name="" id="" cols="30" rows="2" placeholder="Describa los servicios que oferce las habitaciones"
+          formControlName="descripcionServicioHabitaciones"
+          class=" w-full h-[80%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4 rounded-md"
+          style="resize: none;"></textarea>
+      </div>
+    </div>
+    <!-- FIN -->
+
+    <!-- PARTE 3-->
+    <!-- INICIO -->
+    <div class="flex flex-row w-[80%] h-[40%] justify-center items-center ">
+      <div
+        class="relative p-[1.5%] flex flex-row w-[84%] h-[100%] bg-slate-50  border-2 border-black border-opacity-15 rounded-xl ">
+        <div
+          class="top-[8%] left-[0.85%] absolute shadow-xl rounded-md bg-custom-primary text-white text-xl font-google-anta px-[1%] py-[0.5%]">
+          Desayuno incluido</div>
+        <img src="{{this.imagenOferta()}}" alt="" class="w-[31%] h-full rounded-xl">
+        <div class="flex flex-col h-full w-[45%]  px-[1.5%] gap-[1%]">
+          <p class="font-bold font-google-anta text-3xl text-black">{{getValueFormOffer("titulo") == "" ? "Titulo
+            Oferta" : getValueFormOffer("titulo")}}</p>
+          <div class="flex flex-row items-center ">
+            @for(i of [1,2,3,4,5];track [1,2,3,4,5]){
+            <img src="assets/estrella.svg" alt="" class="h-9 w-9">
+            }
+            <div class="ml-[2%] h-[90%] w-[11%] bg-amber-500 rounded-md flex flex-row gap-[3%] p-[1%]">
+              <img src="assets/like.svg" alt="">
+              <img src="assets/emergencias.svg" alt="">
+            </div>
+          </div>
+          <div class="mt-[5%] py-[0.7%] px-[1.5%] border-2 border-slate-500 text-slate-500 rounded-md max-w-max">
+            <p class="text-base">Recomendado para tu grupo</p>
+          </div>
+          <div
+            class="pl-[3%] mt-[1.5%] w-full max-h-max border-l-4 border-slate-500 border-opacity-25 flex flex-col space-y-[1.7%]">
+            @for(habitacion of habitacionOffer; track habitacionOffer){
+            <p class="text-lg font-bold">{{habitacion}}</p>
+            }
+            <p
+              class="font-bold text-lg gap-[1%] flex flex-row text-custom-primary items-center justify-start justify-items-center">
+              <img src="assets/check.svg" alt="" class="h-7 w-7">
+              Cancelacion gratis
+            </p>
+            <div class="gap-[1%] flex flex-row text-custom-primary text-lg">
+              <img src="assets/check.svg" alt="" class="h-7 w-7">
+              <p class="font-bold">Pago por adelantado</p>
+              <p>- Confirmaras en el alojamiento</p>
+            </div>
+          </div>
+        </div>
+        <div class="text-end font-google-anta h-full w-[24%]  flex flex-col gap-[3%] items-end justify-end  pb-[2%]">
+          <p class="text-xl text-slate-500"># noches, # adultos, # niños</p>
+          <p class="text-xl text-red-500 font-bold">{{getValueFormOffer("descuento") == 0 ? "###" :
+            getValueFormOffer("descuento")}} % Descuento</p>
+          <div class="flex flex-row gap-[3%] max-h-max  w-full items-center justify-items-center justify-end">
+            <p class="text-3xl">BOB {{getValueFormOffer("precio") == 0 ? "##.###" : getValueFormOffer("precio")}}</p>
+            <img src="assets/signo-exclamacion.svg" alt="" class="h-8 w-8">
+          </div>
+          <p class="text-lg text-slate-500">Se pueden aplicar otros cargos</p>
+          <button class="flex flex-row bg-custom-primary w-[85%] h-[18%] items-center justify-center rounded-lg">
+            <p class="text-xl text-white font-bold">Obtener Oferta</p>
+            <img src="assets/felcha_right.svg" alt="" class="h-10 w-10">
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- FIN -->
+
+
+    <!-- PARTE 4 -->
+    <!-- INICIO -->
+    <div class="flex flex-row gap-[1%] w-[80%] h-[10%]  items-center justify-end">
+      <div class="relative w-[20%] h-[80%] flex flex-row items-center gap-[2%]">
+        <input type="checkbox" id="opcionOffer2" class="peer/opcionOffer2 hidden">
+        <label for="opcionOffer2"
+          class="bg-open-windown h-10 w-10 bg-cover bg-center cursor-pointer peer-checked/opcionOffer2:bg-close-windown transition-all"></label>
+        <input type="text" name="" id="" placeholder="Estado" [value]="valueSelectEstado"
+          class="rounded-md w-full h-[90%] fnt-google-anta text-2xl pl-4 outline-none border-custom-primary border-4 font-google-anta"
+          disabled>
+        <div
+          class="peer-checked/opcionOffer2:visible invisible flex flex-col  absolute  bottom-[100%] left-[14%]  w-[200px] bg-slate-50 rounded-xl shadow-custom-shadow z-10">
+          @for (estado of difEstadoOffer; track difEstadoOffer; let last = $last) {
+          <div [class]="{'rounded-b-xl' : last}" (click)="updateSelectEstado(estado)"
+            class="items-center justify-center flex flex-row gap-4  w-[100%] h-[70px]   border-b-2  border-b-gray-400 border-opacity-50 hover:bg-gray-400 hover:bg-opacity-50">
+            <div class="flex flex-col">
+              <p class="text-2xl font-bold font-google-anta ">{{estado}}</p>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+      <button type="submit" class="h-[80%] w-[10%] rounded-xl bg-custom-primary mr-[9%] border-4 shadow-xl">
+        <p class="text-white font-bold font-google-anta text-3xl py-4" style="text-shadow: 2px 2px black;">
+          Guardar
+        </p>
+      </button>
+    </div>
+    <! -- FIN -->
+  </form>
+
+  <script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+  <script src="upload_widget.js" type="text/javascript"></script>
+</div>

@@ -1,0 +1,38 @@
+<div class="h-full w-full flex flex-col  items-center">
+  <p class="mt-[10%] mb-[8%] font-google-anta font-bold text-5xl" style="text-shadow: 2px 2px #31bb11;">
+    Iniciar Sesion
+  </p>
+  <!-- FORMULARIO LOGIN -->
+  <form class=" flex flex-col gap-3 w-full h-[50%] items-center" action="" method="post" [formGroup]="myFormLogin"
+    (ngSubmit)="procesarFormularioLogin()">
+    <!-- EMAIL -->
+    <div class="w-full h-[27%]  flex flex-col justify-between">
+      <p class=" font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">E-mail</p>
+      <input formControlName="email" type=" text" name="" id="" placeholder="Indica tu direccion de email"
+        autocomplete="on"
+        class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+    </div>
+    <!-- CONTRASEÑA -->
+    <div class="w-full h-[27%]   flex flex-col justify-between">
+      <p class=" font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">Contraseña</p>
+      <input formControlName="password" type="password" name="" id="" placeholder="Introduce la contraseña"
+        class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+    </div>
+
+    <!-- BUTTON PARA CARGAR FORMUARIO -->
+    <button type="submit"
+      class="w-[50%] rounded-xl p-1 mt-[3%] text-white font-google-anta font-bold text-2xl border-4 bg-custom-primary shadow-custom-shadow ">
+      <p class="text-white font-bold font-google-anta text-3xl py-4" style="text-shadow: 2px 2px black;">Ingresar</p>
+    </button>
+  </form>
+  <!--  -->
+  <div class="mt-4 flex flex-row  w-full h-[5%] items-center">
+    <hr class="bg-slate-400 bg-opacity-70 h-[7%] w-full">
+    <p class="mx-3 font-google-anta text-xl whitespace-nowrap">
+      ¿No tienes cuenta?
+      <a routerLink="/auth/registro" class="text-custom-primary cursor-pointer"
+        style="text-shadow: 1px 1px black;">¡¡Registrate Aqui!!</a>
+    </p>
+    <hr class="bg-slate-400 bg-opacity-70 h-[7%] w-full">
+  </div>
+</div>

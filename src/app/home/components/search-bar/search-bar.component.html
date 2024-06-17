@@ -1,0 +1,20 @@
+<div
+  class="absolute mx-[10%] inset-0 h-[7.5%] top-[45%] p-[0.3%] left-0 z-10 rounded-xl bg-custom-secondary shadow-xl flex flex-row gap-2">
+  @if(homeService.isAlojamiento()){
+  <app-alojamiento-opcion1 class="w-[30%]" />
+  <app-alojamiento-opcion2 class="w-[30%]" />
+  <app-alojamiento-opcion3 class="w-[30%]" />
+  }@else if(homeService.isVuelos()){
+  <app-vuelo-opcion1 class="w-[30%]" [placeholderCustom]="'Origen'" (onValueCustom)="onSearchBarVOP1($event)" />
+  <app-vuelo-opcion1 class="w-[30%]" [placeholderCustom]="'Destino'" (onValueCustom)="onSearchBarVOP2($event)" />
+  <app-vuelo-opcion3 class="w-[30%]" />
+  <app-vuelo-opcion4 class="w-[30%]" />
+  }@else if(homeService.isAtraccionTurismo()){
+  <app-turismo-opcion1 class="w-[45%]" [placeholderCustom]="'¿Adónde vas?'" (onValueCustom)="onSearchBarTOP1($event)" />
+  <app-turismo-opcion2 class="w-[45%]" [placeholderCustom]="'Elige las fechas'"
+    (onValueCustom)="onSearchBarTOP2($event)" />
+  }
+  <button class="w-[10%] h-full bg-custom-primary rounded-xl" (click)="datosSearchBar()">
+    <p class="text-white font-google-anta text-2xl">Buscar</p>
+  </button>
+</div>

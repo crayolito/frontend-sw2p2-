@@ -1,0 +1,32 @@
+<!-- START -->
+<button
+  class="relative group px-2 w-full h-full bg-slate-50 rounded-xl flex flex-row gap-2 justify-between items-center">
+  <div class="flex flex-row gap-2 items-center">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" class="h-9 w-9 flex-shrink-0" fill="#000000">
+      <path
+        d="M480-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47ZM160-160v-112q0-34 17.5-62.5T224-378q62-31 126-46.5T480-440q66 0 130 15.5T736-378q29 15 46.5 43.5T800-272v112H160Zm80-80h480v-32q0-11-5.5-20T700-306q-54-27-109-40.5T480-360q-56 0-111 13.5T260-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T560-640q0-33-23.5-56.5T480-720q-33 0-56.5 23.5T400-640q0 33 23.5 56.5T480-560Zm0-80Zm0 400Z" />
+    </svg>
+    <p class="bg-transparent font-google-anta text-black text-xl focus:outline-none">
+      {{valueViewCliente()=="" ? "¿ Cuantas viajeros ?": valueViewCliente()}}
+    </p>
+  </div>
+  <input type="checkbox" id="opcionV3" class="peer/opcionV3 hidden">
+  <label for="opcionV3"
+    class="bg-open-windown h-8 w-8  bg-cover bg-center cursor-pointer peer-checked/opcionV3:bg-close-windown transition-all"></label>
+  <!--  -->
+  <div
+    class="flex flex-col gap-6 absolute p-7 top-[118%] left-[0%] h-[280px] w-[400px] bg-slate-50 rounded-xl shadow-custom-shadow invisible peer-checked/opcionV3:visible">
+    <div class="flex flex-row gap-8 items-center h-[27%] w-[100%] bg-transparent">
+      <p class="font-google-anta text-xl w-[35%]">Adulto</p>
+      <cp-input-number class="h-[100%] w-[50%]" (onValueInputNumber)="onValueInput1($event)" />
+    </div>
+    <div class="flex flex-row gap-8 items-center h-[27%] w-[100%] bg-transparent">
+      <p class="font-google-anta text-xl w-[35%]">Joven</p>
+      <cp-input-number class="h-[100%] w-[50%]" (onValueInputNumber)="onValueInput2($event)" />
+    </div>
+    <div class="flex flex-row gap-8 items-center h-[27%] w-[100%] bg-transparent">
+      <p class="font-google-anta text-xl w-[35%]">Niño</p>
+      <cp-input-number class="h-[100%] w-[50%]" (onValueInputNumber)="onValueInput3($event)" />
+    </div>
+  </div>
+  <!-- END -->

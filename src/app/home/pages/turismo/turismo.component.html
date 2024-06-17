@@ -1,0 +1,18 @@
+<div class="flex flex-col h-full w-full">
+  <div class="mt-[2%] flex flex-col w-full h-[8%] gap-[5%]">
+    <p class="font-bold text-3xl font-google-anta">Destinos Top</p>
+    <p class="text-2xl font-google-anta">Opciones mas populares entre la comunidad de UrpiTours</p>
+  </div>
+  <div class=" mb-[2%] w-full h-[94%] grid grid-cols-3 grid-rows-4 gap-y-[2%] gap-x-[1%] img-container">
+    @for(destino of destinosTop; track destinosTop){
+    <div class="relative bg-green-700 w-[30$] cursor-pointer img-container rounded-xl shadow-custom-shadow ">
+      <data class="absolute flex flex-col z-30 text-white top-[70%] left-[5%]">
+        <p style="text-shadow: 1px 1px black" class="font-google-anta text-3xl">{{destino.titulo}}</p>
+        <p class="font-google-anta text-xl">{{destino.numero}} cosas por hacer</p>
+      </data>
+      <div class="absolute bottom-0 w-full h-[40%] bg-gradient-to-t from-black to-transparent opacity-85 z-20"></div>
+      <img src="{{destino.image}}" alt="" class="h-full w-full object-cover zoom rounded-xl z-10">
+    </div>
+    }
+  </div>
+</div>

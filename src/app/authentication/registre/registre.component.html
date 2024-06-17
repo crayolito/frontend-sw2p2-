@@ -1,0 +1,73 @@
+<div class="h-full w-full flex flex-col  items-center">
+  <p class="mt-[10%] mb-[8%] font-google-anta font-bold text-5xl" style="text-shadow: 2px 2px #31bb11;">
+    Registro
+  </p>
+  <!-- FORMULARIO LOGIN -->
+  <form [class]="!inputColaborador()? 'h-[62%]' : 'h-[72%]'" class="flex flex-col gap-3 w-full h-[50%] items-center"
+    action="" method="get" autocomplete="off" [formGroup]="myFormRegistro" (ngSubmit)="procesarFormulario()">
+    <!-- EMAIL -->
+    <div class="w-full h-[22%]  flex flex-col justify-between">
+      <p class=" font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">E-mail</p>
+      <input formControlName="email" type=" text" name="" id="" placeholder="Indica tu direccion de email"
+        class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+    </div>
+    <!-- CONTRASEÑA -->
+    <div class="w-full h-[22%]   flex flex-col justify-between">
+      <p class=" font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">Contraseña</p>
+      <input formControlName="password1" type="password" name="" id="" placeholder="Introduce la contraseña"
+        class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+    </div>
+    <!-- CONFRIMAR CONTRASEÑA -->
+    <div class="w-full h-[22%]   flex flex-col justify-between">
+      <p class=" font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">Contraseña</p>
+      <input formControlName="password2" type="password" name="" id="" placeholder="Introduce la contraseña"
+        class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+    </div>
+    <!-- ESTATUS -->
+    <div class="w-full h-[22%]  flex flex-col justify-between">
+      <p class="font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">Estatus</p>
+      <div
+        class="relative px-4 mt-1 items-center rounded-md flex flex-row h-full w-full border-2 border-gray-400 focus:outline-none has-[:checked]:border-custom-primary has-[:checked]:border-4">
+        <input formControlName="estatus" readonly type="text" name="" id="" placeholder="Seleccione su estatu"
+          class=" w-full h-[60%] font-google-anta text-2xl  outline-none ">
+        <input type="checkbox" id="opcionLogin" class="peer/opcionLogin hidden">
+        <label for="opcionLogin"
+          class="bg-open-windown h-8 w-8  bg-cover bg-center cursor-pointer peer-checked/opcionLogin:bg-close-windown transition-all"></label>
+        <!-- OPCIONES DE ESTATUS -->
+        <div
+          class="flex flex-col top-[109%] left-[0%] rounded-md absolute bg-slate-50 w-[280px]  shadow-custom-shadow invisible peer-checked/opcionLogin:visible">
+          @for(estatu of estatus; track estatus; let last = $last){
+          <div (click)="updateEstatus(estatu)" [class]="{'rounded-b-xl' : last}" class=" cursor-pointer items-center justify-center flex flex-row gap-4 w-[100%] h-[87px] border-b-2 border-b-gray-400
+        border-opacity-50 hover:bg-gray-400 hover:bg-opacity-50">
+            <div class="flex flex-col">
+              <p class="text-2xl  font-google-anta ">{{estatu}}</p>
+            </div>
+          </div>
+          }
+        </div>
+        <!--  -->
+      </div>
+    </div>
+    <!-- CODIGO DE COLABORADOR -->
+    <div [class]="inputColaborador()? 'visible' : 'hidden'" class="w-full h-[22%]  flex flex-col justify-between">
+      <p class=" font-google-anta text-2xl" style="text-shadow: 1px 1px #31bb11;">Colaborador </p>
+      <input formControlName="codigo" type="text" name="" id="" placeholder="codigo de colaborador"
+        class="rounded-md w-full h-[60%] font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4">
+    </div>
+    <!-- BUTTON PARA CARGAR FORMUARIO -->
+    <button type="submit"
+      class="w-[50%] rounded-xl p-1 mt-[3%] text-white font-google-anta font-bold text-2xl border-4 bg-custom-primary shadow-custom-shadow ">
+      <p class="text-white font-bold font-google-anta text-3xl py-4" style="text-shadow: 2px 2px black;">Continuar</p>
+    </button>
+  </form>
+  <!--  -->
+  <div class="mt-4 flex flex-row  w-full h-[5%] items-center">
+    <hr class="bg-slate-400 bg-opacity-70 h-[7%] w-full">
+    <p class="mx-3 font-google-anta text-xl whitespace-nowrap">
+      ¿Tienes cuenta?
+      <a routerLink="/auth/login" class="text-custom-primary cursor-pointer" style="text-shadow: 1px 1px black;">¡Inicia
+        Sesion Aqui!</a>
+    </p>
+    <hr class="bg-slate-400 bg-opacity-70 h-[7%] w-full">
+  </div>
+</div>

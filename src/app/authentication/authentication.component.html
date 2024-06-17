@@ -1,0 +1,20 @@
+<div class="h-screen w-screen ">
+  <div class="flex flex-row h-[10%] w-[100%] bg-custom-primary px-[10%]">
+    <button class="w-[50%] h-full  flex flex-row items-center justify-start" routerLink="/">
+      <p class="text-white font-bold font-google-anta text-4xl" style="text-shadow: 3px 3px black;">UrpiTours.com</p>
+    </button>
+    <div class="w-[50%] h-full  flex flex-row items-center justify-end gap-[5%]">
+      <button class=" rounded-lg hover:bg-white hover:bg-opacity-20">
+        <img src="assets/banderaBolivia.png" class="m-3 h-10 w-10 rounded-full">
+      </button>
+      <button class=" rounded-lg hover:bg-white hover:bg-opacity-20">
+        <img src="assets/helpIcon.svg" class="m-2 h-11 w-11 rounded-full">
+      </button>
+    </div>
+  </div>
+  <div class=" h-[90%] w-[100%]  px-[35.5%]">
+    <div class="h-[100%] w-full">
+      <router-outlet />
+    </div>
+  </div>
+</div>

@@ -1,0 +1,108 @@
+<div class="h-[120%] w-full mt-[2%] flex flex-col px-[10%]">
+  <!-- HEADER -->
+  <!-- INICIO -->
+  <section class="w-full h-[8%] flex flex-row gpa-[5%] ">
+    <div class="h-full w-[60%] flex flex-row items-center gap-[2%] ">
+      <button routerLink="/dashboard/offer" (click)="crearOferta()"
+        class="text-white font-bold text-3xl bg-custom-primary h-[70%] w-[8%] rounded-xl flex justify-center items-center border-4 shadow-2xl hover:bg-green-600">
+        +
+      </button>
+      <button
+        class="bg-custom-primary h-[70%] w-[8%] rounded-xl flex justify-center items-center border-4 shadow-2xl hover:bg-green-600">
+        <img src="assets/iconBuscador.svg" alt="" class="h-9 w-9" />
+      </button>
+      <div class="w-[65%] h-[70%] flex flex-col justify-between">
+        <input type=" text" name="" id="" placeholder="Buscar Pago"
+          class="shadow-2xl rounded-xl w-full h-full font-google-anta text-2xl pl-4 border-2 border-gray-400 focus:outline-none focus:border-custom-primary focus:border-4" />
+      </div>
+    </div>
+    <section class="h-full w-[40%] flex flex-row items-center justify-end">
+      <p
+        class="font-bold font-google-anta text-2xl text-black px-2 w-[25%] h-[85%] gap-[2%] rounded-xl flex flex-row justify-center items-center">
+        TODAS
+        <input type="checkbox" id="opcionPaymenList1" class="peer/opcionPaymenList1 hidden" />
+        <label for="opcionPaymenList1"
+          class="bg-open-windown h-8 w-8 bg-cover bg-center cursor-pointer peer-checked/opcionPaymenList1:bg-close-windown transition-all"></label>
+      </p>
+      <p
+        class="font-bold font-google-anta text-2xl text-black px-2 w-[25%] h-[85%] gap-[2%] rounded-xl flex flex-row justify-center items-center">
+        FECHA
+        <input type="checkbox" id="opcionPaymenList2" class="peer/opcionPaymenList2 hidden" />
+        <label for="opcionPaymenList2"
+          class="bg-open-windown h-8 w-8 bg-cover bg-center cursor-pointer peer-checked/opcionPaymenList2:bg-close-windown transition-all"></label>
+      </p>
+    </section>
+  </section>
+  <!-- FIN -->
+
+  <!-- BODY -->
+  <!-- INICIO -->
+  <section class=" w-full h-[82%] flex flex-col gap-[2%]">
+    @for(oferta of viewOfertasLista; track viewOfertasLista; let id= $index){
+    <div
+      class="bg-slate-100  w-full h-[12.8%] rounded-lg shadow-lg border-4 border-slate-400 border-opacity-50 flex flex-row items-center">
+      <div class="rounded-full bg-slate-400 bg-opacity-45 h-16 w-16 flex items-center justify-center mx-[2%]">
+        <img src="assets/camaListOffers.svg" alt="" class="h-11 w-11">
+      </div>
+      <div class=" h-full w-[30%] flex items-center">
+        <p class="font-bold font-google-anta text-2xl break-words leading-7 pr-[0.5%]">
+          {{oferta.titulo}}
+        </p>
+      </div>
+      <div class=" h-full w-[15%] flex flex-row items-center gap-[4%]">
+        <img src="assets/montoDinero.svg" alt="" class="h-9 w-9">
+        <p class=" font-google-anta text-xl break-words leading-7 pr-[0.5%]">
+          BOB {{oferta.precio}}
+        </p>
+      </div>
+      <div class=" h-full w-[22%] flex flex-row items-center gap-[4%] justify-center">
+        @if(oferta.estado === 'Vendida'){
+        <div
+          class="flex items-center justify-center border-4 border-custom-primary h-[50%] px-[4%] bg-custom-primary bg-opacity-20 rounded-full text-2xl font-google-anta text-custom-primary">
+          Vendida
+        </div>
+        }@else if(oferta.estado === 'Disponible'){
+        <div
+          class="flex items-center justify-center border-4 border-blue-600 h-[50%] px-[4%] bg-blue-600 bg-opacity-20 rounded-full text-2xl font-google-anta text-blue-600">
+          Disponible
+        </div>
+        }@else if(oferta.estado === 'Reservado'){
+        <div
+          class="flex items-center justify-center border-4 border-amber-500 h-[50%] px-[4%] bg-amber-500 bg-opacity-20 rounded-full text-2xl font-google-anta text-amber-500">
+          Reservado
+        </div>
+        }
+      </div>
+      <div class="  h-full w-[25%] flex flex-row items-center justify-center gap-[10%] ">
+        <button class="flex">
+          <input type="checkbox" id="opcionVLO{{id}}" class="peer/opcionVLO hidden" />
+          <label for="opcionVLO{{id}}"
+            class="bg-visionOn-windown h-8 w-8  bg-cover bg-center cursor-pointer peer-checked/opcionVLO:bg-visionOff-windown transition-all"></label>
+        </button>
+        <button routerLink="/dashboard/offer" (click)="editarOferta(oferta)">
+          <img src="assets/editarListOffers.svg" alt="" class="h-10 w-10">
+        </button>
+        <button>
+          <img src="assets/deleteListOffers.svg" alt="" class="h-10 w-10">
+        </button>
+      </div>
+    </div>
+    }@empty {
+    }
+  </section>
+  <!-- FIN -->
+
+  <!-- FOOTER -->
+  <!-- INICIO -->
+  <section class="w-full h-[8%] flex flex-row gap-[2%] items-center justify-end">
+    <button (click)="backElementos()"
+      class="bg-custom-primary h-[65%] w-[4%] rounded-xl flex justify-center items-center border-4 shadow-2xl hover:bg-green-600">
+      <img src="assets/iconLeft.svg" alt="" class="h-9 w-9" />
+    </button>
+    <button (click)="nextElementos()"
+      class="bg-custom-primary h-[65%] w-[4%] rounded-xl flex justify-center items-center border-4 shadow-2xl hover:bg-green-600">
+      <img src="assets/iconRight.svg" alt="" class="h-9 w-9" />
+    </button>
+  </section>
+  <!-- FIN -->
+</div>

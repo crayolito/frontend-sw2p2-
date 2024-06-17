@@ -1,0 +1,23 @@
+<!-- A DONDE VAS-->
+<!-- START -->
+<div class="px-2 w-full h-full  bg-slate-50 rounded-xl flex flex-row gap-2 items-center">
+  <img src="assets/clasePasajero.svg" alt="" class="h-9 w-9 flex-shrink-0">
+  <input type="text" name="" id="opcion1" placeholder="¿ En que categoria vas ?" [value]="valorSeleccionado()"
+    class=" w-full peer/opcionV4 bg-transparent font-google-anta text-black text-xl focus:outline-none" readonly
+    autocomplete="off" />
+  <input type="checkbox" id="opcionV4" class="peer/opcionV4 hidden">
+  <label for="opcionV4"
+    class="bg-open-windown h-8 w-8  bg-cover bg-center cursor-pointer peer-checked/opcionV4:bg-close-windown transition-all"></label>
+  <div
+    class="peer-checked/opcionV4:visible invisible flex flex-col  absolute  top-[110%] left-[69.5%]  w-[250px] bg-slate-50 rounded-xl shadow-custom-shadow">
+    @for (viajero of categoriaViaje; track categoriaViaje; let last = $last) {
+    <div [class]="{'rounded-b-xl' : last}" (click)="seleccionarCategoriaViaje(viajero)"
+      class="items-center justify-center flex flex-row gap-4  w-[100%] h-[87px]   border-b-2  border-b-gray-400 border-opacity-50 hover:bg-gray-400 hover:bg-opacity-50">
+      <div class="flex flex-col">
+        <p class="text-2xl  font-google-anta ">{{viajero}}</p>
+      </div>
+    </div>
+    }
+  </div>
+</div>
+<!-- END -->

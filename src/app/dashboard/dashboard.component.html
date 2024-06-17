@@ -1,0 +1,49 @@
+<div class="relative w-screen h-screen bg-slate-50 overflow-x-hidden">
+  <!-- HEADER -->
+  <!-- INICIO -->
+  <div class="relative flex flex-col w-full h-[30%] shadow-2xl">
+    <img src="https://www.tripadvisor.com/img2/branding/homepage/hotel-hero-default-5.jpg" alt=""
+      class="object-cover w-full h-full" />
+    <div class="absolute top-0 w-full h-[35%] bg-gradient-to-b from-black to-transparent opacity-70"></div>
+    <div class="absolute bottom-0 w-full h-[20%] bg-gradient-to-t from-black to-transparent opacity-70"></div>
+    <div class="px-[5%] absolute  w-full h-[35%] flex flex-row items-center ">
+      <section class="flex flex-row items-center gap-[1.2%] w-[70%] ">
+        <p class="text-white font-bold font-google-anta text-4xl" style="text-shadow: 3px 3px black;">UrpiTours.com</p>
+        @for(option of optionsDashboard ; track optionsDashboard; let id= $index, first = $first){
+        <div (click)="redireccionarPage(option.titulo,option.ruta)"
+          [ngClass]="{'border-4 bg-custom-primary bg-opacity-10':  getStatusDashboard() == option.estado}"
+          class="cursor-pointer flex flex-row items-center justify-center gap-2 border-custom-primary  px-4  py-2 rounded-3xl">
+
+          <img src="{{option.icono}}" alt="" class="h-9 w-9 object-cover">
+          <label [ngClass]="{'text-custom-primary':  getStatusDashboard() == option.estado}"
+            class=" cursor-pointer  text-white text-2xl font-google-anta">{{option.titulo}}</label>
+        </div>
+
+        }
+      </section>
+      <section class="flex flex-row items-center justify-end gap-[4%] w-[30%] h-full">
+        <p class="text-white text-2xl font-google-anta" style="text-shadow: 2px 2px black;">
+          {{informacionUsuario().email}}</p>
+        <img src="assets/perfilAuth.svg" alt="" class="h-9 w-9">
+        <button (click)="cerrarSesion()">
+          <img src="assets/cerrar-sesion.svg" alt="" class="h-9 w-9">
+        </button>
+      </section>
+      <p></p>
+    </div>
+    <h1 class="top-[35%] left-[5%] absolute text-5xl font-bold font-google-anta text-white"
+      style="text-shadow: 4px 4px black;">
+      ¡Bienvenido!</h1>
+    <p class="top-[55%] left-[5%] absolute font-google-anta text-3xl mt-2 text-white"
+      style="text-shadow: 3.5px 3.5px black;">Estás a un paso
+      de llegar a miles de viajeros.
+    </p>
+    <p class="top-[70%] left-[5%] absolute font-google-anta text-3xl mt-2 text-white"
+      style="text-shadow: 3.5px 3.5px black;">
+      Publica tus ofertas de alojamientoy haz crecer tu negocio con nosotros.</p>
+  </div>
+  <!-- FIN -->
+  <div class="w-full h-[100%] px-[5%]">
+    <router-outlet />
+  </div>
+</div>
