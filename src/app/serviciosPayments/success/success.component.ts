@@ -22,6 +22,7 @@ export default class SuccessComponent implements OnInit {
   public idViajero: string = "";
 
   descargarPDF(): void {
+    this.precioTotal = Math.round(this.precioTotal);
     if (this.tipoVenta == "habitacion") {
       this.paymentStripeService.crearComprobantePagoAgencia(
         this.elementoBusqueda?.tituloOferta!,
