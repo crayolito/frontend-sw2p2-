@@ -23,6 +23,7 @@ export default class SuccessComponent implements OnInit {
 
   descargarPDF(): void {
     this.precioTotal = Math.round(this.precioTotal);
+    console.log(this.precioTotal);
     if (this.tipoVenta == "habitacion") {
       this.paymentStripeService.crearComprobantePagoAgencia(
         this.elementoBusqueda?.tituloOferta!,

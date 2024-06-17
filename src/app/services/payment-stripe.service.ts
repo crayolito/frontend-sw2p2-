@@ -62,7 +62,7 @@ export class PaymentStripeService {
       titleOffert: `${tituloOferta}`,
       paymentDate: `${this.obtenerFechaPago()}`,
       paymentMethod: 'Tarjeta Debito',
-      amount: `${montoTotal}`,
+      amount: montoTotal,
       idUser: `${idViajero}`,
       accomodation: `${idAlojamiento}`,
     };
