@@ -76,11 +76,18 @@ export default class HomeComponent implements OnInit {
     ),
     new OptionNavegation(
       "assets/servicios.svg", "Servicios", "/home/service-offering"
+    ),
+    new OptionNavegation(
+      "assets/politicasEmpresa.svg", "Politicas", "/home/privacy-policies"
     )
   ]
 
   isLogin() {
     return this.authService.confirmacionAuth();
+  }
+
+  isPrivacyPolicies(): boolean {
+    return this.homeService.isPrivacyPolicies();
   }
 
   quienLogin() {
@@ -122,6 +129,12 @@ export default class HomeComponent implements OnInit {
         this.titulo1.set("Actividades y Experiencias");
         this.titulo2.set("Descubre nuevas atracciones y experiencias en Bolivia y Peru...");
         this.homeService.updateStatusPage(HomeStatus.AtraccionTurismo);
+        break;
+      case "Politicas":
+        this.router.navigate(['/home/privacy-policies']);
+        this.titulo1.set("Seguridad y Protección de Datos Personales");
+        this.titulo2.set("Recopilación y Uso de Información en UrbiTours.com ...");
+        this.homeService.updateStatusPage(HomeStatus.privacyPolicies);
         break;
       default:
         this.router.navigate(['/service-offering']);

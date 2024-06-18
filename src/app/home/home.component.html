@@ -1,7 +1,6 @@
 <div class="h-screen w-screen overflow-y-scroll  relative">
-  <app-search-bar />
+  <app-search-bar [ngClass]="{'hidden': isPrivacyPolicies()}" />
   <div class="w-[100%] h-[50%] relative">
-
     <img src="https://static.tacdn.com/img2/branding/homepage/hotel-hero-default-4.jpg" alt=""
       class="object-cover w-full h-full" />
     <div class="absolute top-0 w-full h-[35%] bg-gradient-to-b from-black to-transparent opacity-70"></div>
@@ -66,7 +65,8 @@
       </div>
     </div>
   </div>
-  <div [ngClass]="{'h-[100%]': isAlojamiento() || isNone(), 'h-[62%]': isVuelos(),'h-[150%]': isAtraccionTurismo()}"
+  <div
+    [ngClass]="{'h-[100%]': isAlojamiento() || isNone() || isPrivacyPolicies(), 'h-[62%]': isVuelos(),'h-[150%]': isAtraccionTurismo()}"
     class="w-[100%] px-[9%]">>
     <router-outlet />
   </div>

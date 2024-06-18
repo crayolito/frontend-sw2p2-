@@ -106,7 +106,7 @@ export class PaymentStripeService {
     idUser: "${idViajetro}"
         }
   ) {
-    id  
+    id
   }
 }`,
     };
@@ -114,6 +114,14 @@ export class PaymentStripeService {
     this.http
     this.http.post(this.apiUrlGraphql, data, { headers: this.headers }).subscribe({
       next: (response: any) => {
+        if (typeof localStorage !== 'undefined') {
+          localStorage.removeItem('elementoVenta');
+          localStorage.removeItem('diasEstancia');
+          localStorage.removeItem('precioNoche');
+          localStorage.removeItem('precioTotal');
+          localStorage.removeItem('descuento');
+          localStorage.removeItem('venta');
+        }
         console.log(response);
       },
       error: (error: any) => {

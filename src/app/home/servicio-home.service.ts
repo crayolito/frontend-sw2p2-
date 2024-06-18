@@ -9,6 +9,7 @@ export enum HomeStatus {
   Vuelos,
   AtraccionTurismo,
   none,
+  privacyPolicies
 }
 
 @Injectable({
@@ -21,6 +22,10 @@ export class HomeService {
   public http = inject(HttpClient);
   updateStatusPage(status: HomeStatus) {
     this.statusPage.set(status);
+  }
+
+  isPrivacyPolicies(): boolean {
+    return this.statusPage() == HomeStatus.privacyPolicies;
   }
 
   isAlojamiento(): boolean {

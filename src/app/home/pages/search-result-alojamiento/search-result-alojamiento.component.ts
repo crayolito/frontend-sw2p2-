@@ -157,10 +157,19 @@ export default class SearchResultAlojamientoComponent implements OnInit {
     var aux1 = this.viewOfertasLista[this.viewOfertasLista.length - 1];
     var aux2 = this.auxDataOfertas.indexOf(aux1);
     let aux3: number = 0;
+    console.log({
+      a: this.auxDataOfertas,
+      b: this.viewOfertasLista,
+      aux1,
+      aux2,
+
+    }
+    );
     if ((aux2 + 1) + 9 > this.auxDataOfertas.length) {
       aux3 = (aux2 + 1) - this.auxDataOfertas.length;
       if (aux3 != 0) {
         this.viewOfertasLista = this.auxDataOfertas.slice(aux3);
+        console.log(this.auxDataOfertas.slice(aux3));
       }
       return;
     }
@@ -182,9 +191,9 @@ export default class SearchResultAlojamientoComponent implements OnInit {
     return Array(n);
   }
 
-  desayunoIncluido(): boolean {
-    return this.perfilService.desayunoIncluido();
-  }
+  // desayunoIncluido(): boolean {
+  //   return this.perfilService.desayunoIncluido();
+  // }
 
   verificarServicio(servicio: string, descripcion: string): boolean {
     return descripcion.toLowerCase().includes(servicio.toLowerCase());

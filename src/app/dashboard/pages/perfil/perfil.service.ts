@@ -68,14 +68,9 @@ export class PerfilService {
   public agenciaAlojamiento = signal<AgenciaAlojamiento>(
     new AgenciaAlojamiento("", '', '', '', '', 0, '', '', 0, '', [], '', '', '')
   );
-  public desayunoIncluido = signal<boolean>(false);
 
   updateAgenciaAlojamiento(agencia: AgenciaAlojamiento) {
     this.agenciaAlojamiento.set(agencia);
-    let str1 = 'Desayuno incluido';
-    let str2 = agencia.serviciosGenerales;
-    let resultado = str2.toLowerCase().includes(str1.toLowerCase());
-    this.desayunoIncluido.set(resultado);
   }
 
   getAgenciaAlojamiento(): AgenciaAlojamiento {
@@ -164,6 +159,7 @@ export class PerfilService {
       .post(this.apiUrlGraphql, data, { headers: this.headers })
       .pipe(
         map((response: any) => {
+          console.log(response);
           const agenciaData = response.data.findAccomodationsByUserId[0];
           const agencia: AgenciaAlojamiento = {
             id: agenciaData.id,

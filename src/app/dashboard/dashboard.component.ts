@@ -99,7 +99,7 @@ export default class DashboardComponent implements OnInit {
         break;
       case 'Analisis':
         this.dashboardService.updateStatusDashboard(DashboardStatus.perfilCR);
-        window.open('https://bi-sw2-p2-xbrsc99ypyn5eyob7a5xqm.streamlit.app/');
+        window.open('https://appbi-mfqblsbhqdma6mfnyurffr.streamlit.app/');
         break;
       default:
         break;

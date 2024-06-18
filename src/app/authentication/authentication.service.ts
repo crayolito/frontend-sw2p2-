@@ -86,7 +86,6 @@ export class AuthService {
       localStorage.removeItem('userRole');
       localStorage.removeItem('ofertaEnEdicion');
       localStorage.removeItem('agenciaAlojamientoId');
-
     }
     this.confirmacionAuth.set(false);
   }

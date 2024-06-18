@@ -38,6 +38,14 @@ export const routes: Routes = [
           ),
       },
       {
+        path: 'privacy-policies',
+        title: 'PRIVACIDAD',
+        loadComponent: () =>
+          import(
+            './home/pages/privacy/privacy.component'
+          ),
+      },
+      {
         path: '', redirectTo: '/page-alojamiento', pathMatch: 'full'
       },
       {

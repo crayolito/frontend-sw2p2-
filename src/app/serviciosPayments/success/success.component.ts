@@ -37,6 +37,15 @@ export default class SuccessComponent implements OnInit {
       )
       this.pdfHabitacion();
       this.router.navigate(['/']);
+
+      if (typeof localStorage !== 'undefined') {
+        localStorage.removeItem('elementoVenta');
+        localStorage.removeItem('diasEstancia');
+        localStorage.removeItem('precioNoche');
+        localStorage.removeItem('precioTotal');
+        localStorage.removeItem('descuento');
+        localStorage.removeItem('venta');
+      }
       return;
     }
 
